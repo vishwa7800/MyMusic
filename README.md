@@ -32,7 +32,7 @@ A modern browser-based music player with user authentication, playlists, likes, 
 
 **Clone the repository**:
    ```bash
-   git clone https://github.com/vishwa7800/SkillTracker.git
+   git clone https://github.com/vishwa7800/MyMusic.git
    ```
 
 ## ▶️ How to run
