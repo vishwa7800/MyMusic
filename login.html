@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Music App</title>
+  <!-- Link to main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+  <!-- Back link to return to music player -->
+  <a href="index.html" class="back-link">← Back to Music Player</a>
+
+  <!-- Login form container -->
+  <div class="auth-box">
+    <h2>Login</h2>
+    <div class="error-message" id="loginError"></div>
+    
+    <div class="input-group">
+      <input type="text" id="loginUser" placeholder="Email or Username" required>
+      <span class="input-icon">👤</span>
+    </div>
+    
+    <div class="input-group">
+      <input type="password" id="loginPass" placeholder="Password" required>
+      <span class="input-icon toggle-password" onclick="togglePassword('loginPass')">👁️</span>
+    </div>
+    
+    <div class="remember-forgot">
+      <label><input type="checkbox" id="rememberMe"> Remember me</label>
+      <a href="#" onclick="forgotPassword(); return false;">Forgot password?</a>
+    </div>
+    
+    <button onclick="login()">Login</button>
+    <p>Don’t have an account? <a href="signup.html">Sign up</a></p>
+  </div>
+  <!-- JavaScript: Login functionality -->  <script src="script.js"></script>
+</body>
+</html>

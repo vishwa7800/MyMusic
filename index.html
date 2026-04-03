@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <!-- Link to main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header: Navigation bar with logo and menu links -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <h1>🎵 MyMusic</h1>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" onclick="showHome()">Home</a>
+        <a href="#" onclick="showAbout()">About</a>
+        <a href="#" onclick="showLiked()">Liked</a>
+        <a href="login.html" id="loginLink">Login</a>
+        <a href="signup.html" id="signupLink">Sign Up</a>
+        <a href="#" onclick="logout()" id="logoutLink" style="display:none; color: #ff6b6b;">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sidebar: Navigation menu with playlists and options -->
+  <div class="sidebar">
+    <div class="sidebar-section">
+      <button onclick="showHome()">🏠 Home</button>
+      <button onclick="showSearch()">🔍 Search</button>
+      <button onclick="showLibrary()">📚 Your Library</button>
+    </div>
+    
+    <div class="sidebar-divider"></div>
+    
+    <div class="sidebar-section">
+      <button onclick="showLiked()">💜 Liked Songs</button>
+      <button onclick="showRecentlyPlayed()">⏱️ Recently Played</button>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section">
+      <h3 style="color: #1db954; font-size: 14px; margin-bottom: 10px; padding: 0 16px;">Playlists</h3>
+      <div id="playlistsList"></div>
+      <button onclick="createNewPlaylist()" style="margin: 10px 16px; width: calc(100% - 32px); padding: 8px; background: #1db954; border: none; border-radius: 5px; color: white; cursor: pointer; font-weight: 600;">➕ New Playlist</button>
+    </div>
+    
+  </div>
+
+  <!-- Main Content: Displays song list or other views -->
+  <div class="main">
+    <h2 id="sectionTitle">All Songs</h2>
+    <div id="songList" class="song-list"></div>
+  </div>
+
+  <!-- Player: Bottom music player with controls and progress bar -->
+  <div class="player">
+    <div class="player-info">
+      <span id="nowPlaying">Select a song to play</span>
+      <div class="time-display">
+        <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button onclick="prevSong()" title="Previous">⏮</button>
+      <button id="playBtn" onclick="togglePlay()" title="Play/Pause">▶</button>
+      <button onclick="nextSong()" title="Next">⏭</button>
+    </div>
+    
+    <div class="progress-container">
+      <input type="range" id="progress" value="0" min="0" max="100">
+    </div>
+
+    <div class="volume-container">
+      <span class="volume-icon">🔊</span>
+      <input type="range" id="volumeSlider" value="100" min="0" max="100" class="volume-slider" title="Volume">
+      <span id="volumePercent">100%</span>
+    </div>
+  </div>
+
+  <!-- Audio element: Hidden audio player -->
+  <audio id="audio"></audio>
+
+  <!-- Playlist Modal -->
+  <div id="playlistModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="playlistModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="playlistModalTitle">Create playlist</h3>
+        <button class="modal-close" onclick="closePlaylistModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <label for="playlistNameInput">Playlist name</label>
+        <input id="playlistNameInput" type="text" placeholder="My playlist" autocomplete="off">
+        <p id="playlistError" class="modal-error"></p>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closePlaylistModal()">Cancel</button>
+        <button class="btn-primary" onclick="confirmCreatePlaylist()">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Song Modal -->
+  <div id="addSongModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="addSongModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="addSongModalTitle">Add song to playlist</h3>
+        <button class="modal-close" onclick="closeAddSongModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <label for="addSongInput">Song title</label>
+        <input id="addSongInput" type="text" placeholder="Type a song name" autocomplete="off">
+        <label for="addSongPlaylistSelect" style="margin-top: 12px;">Add to playlist</label>
+        <select id="addSongPlaylistSelect"></select>
+        <p id="addSongError" class="modal-error"></p>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeAddSongModal()">Cancel</button>
+        <button class="btn-primary" onclick="confirmAddSongToPlaylist()">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript: Main app functionality -->
+  <script src="script.js"></script>
+</body>
+</html>

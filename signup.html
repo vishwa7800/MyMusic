@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup | Music App</title>
+  <!-- Link to main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+  <!-- Back link to return to music player -->
+  <a href="index.html" class="back-link">← Back to Music Player</a>
+
+  <!-- Signup form container -->
+  <div class="auth-box">
+    <h2>Sign Up</h2>
+    <div class="error-message" id="signupError"></div>
+    
+    <div class="input-group">
+      <input type="email" id="signupEmail" placeholder="Email address" required>
+      <span class="input-icon">📧</span>
+    </div>
+    
+    <div class="input-group">
+      <input type="text" id="signupUser" placeholder="Username (min 3 characters)" required>
+      <span class="input-icon">👤</span>
+    </div>
+    
+    <div class="input-group">
+      <input type="password" id="signupPass" placeholder="Password (min 8 characters)" required>
+      <span class="input-icon toggle-password" onclick="togglePassword('signupPass')">👁️</span>
+    </div>
+    
+    <div class="input-group">
+      <input type="password" id="signupConfirmPass" placeholder="Confirm Password" required>
+      <span class="input-icon toggle-password" onclick="togglePassword('signupConfirmPass')">👁️</span>
+    </div>
+    
+    <div class="password-strength" id="passwordStrength"></div>
+    
+    <button onclick="signup()">Create Account</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <!-- JavaScript: Signup functionality -->
+  <script src="script.js"></script>
+</body>
+</html>
+
